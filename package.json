@@ -1,6 +1,6 @@
 {
   "name": "react-native-pathjs-charts-expo",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Cross platform React Native charting library for expo based on react-native-pathjs-charts 0.0.34",
   "repository": {
     "type": "git",
@@ -8,9 +8,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh",
-    "lint": "eslint --ext .js,.jsx src",
-    "test": "jest"
+    "start": "node_modules/react-native/packager/packager.sh"
   },
   "keywords": [
     "react-native",
@@ -24,25 +22,11 @@
   "author": "Nicolas Padula",
   "license": "Apache-2.0",
   "dependencies": {
-    "expo": "^27.0.1",
-    "lodash": "^4.17.11",
-    "paths-js": "^0.4.5"
-  },
-  "devDependencies": {
-    "babel-jest": "*",
-    "babel-preset-react-native": "^1.9.0",
-    "diff": "^3.1.0",
-    "jest": "*",
-    "jest-react-native": "*",
-    "prop-types": "^15.6.2",
+    "expo": "^30.0.0",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
-    "react-test-renderer": "16.0.0"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example"
-    ]
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "core-js": "2.5.7",
+    "lodash": "4.17.11",
+    "paths-js": "0.4.7"
   }
 }

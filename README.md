@@ -6,13 +6,11 @@
 
 This library is a cross-platform (iOS/Android) library of charts/graphs originally using [react-native-svg](https://github.com/magicismight/react-native-svg) and [paths-js](https://github.com/andreaferretti/paths-js) but ported to use [expo](https://github.com/expo/expo) for the svg part.
 
-This project is based on the now archived at version 0.0.34 [react-native-pathjs-charts](https://github.com/capitalone/react-native-pathjs-charts)
+This project is based on the now archived at version 0.0.34 of [react-native-pathjs-charts](https://github.com/capitalone/react-native-pathjs-charts)
 
-Components include Bar charts, Smoothline charts, Stockline charts, Scatterplots, Tree graphs and Radar graphs. Since Paths-Js makes no assumptions about rendering, this library is perfect for using SVG path objects to render custom charts easily.
+Components include Bar charts, Smoothline charts, Stockline charts, Scatterplots, Tree graphs and Radar graphs.
 
-This library is in its early stages, but I welcome contributors who would like to help make this the charting solution for React Native.
-
-![](https://github.com/capitalone/react-native-pathjs-charts/wiki/images/chart-screenshots.png)
+![](https://github.com/nahog/react-native-pathjs-charts-expo/wiki/images/chart-screenshots.png)
 
 ## Installation
 
@@ -31,40 +29,3 @@ npm install react-native-pathjs-charts-expo --save
 - Chart information configurable based on data parameters which specify which variables are accessors
 - Rendering works on iOS/Android
 - No native dependencies for linking
-
-## Example Application
-
-To run the example application (from a cloned repo):
-
-```
-cd example
-npm install
-react-native run-ios
-# or
-react-native run-android
-```
-
-### Developing and Testing With The Example App
-
-As you are working on changing src files in this library and testing those changes against the example app, it is necessary to copy files to example/node_modules/react-native-pathjs-charts each time a change is made. To automate this, a `sync-rnpc` script has been added that will create a background process to watch for src file changes and automatically copy them. To enable this:
-
-```
-cd example
-npm run sync-rnpc
-```
-
-## Todo
-
-For this library to really shine, there are a lot of improvements to be made. Here are some of ideas:
-
-- Add basic animations to draw the charts
-- Add touch functionality
-- Add the ability to absolutely position regular React-Native views in relation to SVG chart elements
-- More chart types
-- More axis controls (to control scale)
-- Add View component support to allow custom components instead of message when no data appears
-- Events
-- More documentation, information on configuration
-- Extended examples
-- Bug fixing, unit testing, cleanup
-- CICD pipeline with confirmed build success

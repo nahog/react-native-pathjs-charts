@@ -1,33 +1,17 @@
-# Logs
-logs
-*.log
-.history
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# Runtime data
-pids
-*.pid
-*.seed
+# expo
+.expo/
 
-# Coverage tools
-lib-cov
-coverage
-coverage.html
-.cover*
+# dependencies
+/node_modules
 
-# Dependency directory
-node_modules
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Example build directory
-example/dist
-
-# Editor and other tmp files
-*.swp
-*.un~
-*.iml
-*.ipr
-*.iws
-*.sublime-*
-.idea/
-*.DS_Store
-
-util/watchman-update-example-src/watchman-update-example-src.sh
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

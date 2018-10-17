@@ -1,30 +1,12 @@
-/*
-Copyright 2016 Capital One Services, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
-
-SPDX-Copyright: Copyright (c) Capital One Services, LLC
-SPDX-License-Identifier: Apache-2.0
-*/
-
 import React, { Component } from "react";
-import { Text as ReactText } from "react-native";
+import { Text } from "react-native";
 import { Svg } from "expo";
+import _ from "lodash";
+import Stock from "paths-js/stock";
+
 import { Options, styleSvg } from "./util";
 import Axis from "./Axis";
 import GridAxis from "./GridAxis";
-import _ from "lodash";
-
-const Stock = require("paths-js/stock");
 
 export default class Scatterplot extends Component {
   static defaultProps = {
@@ -102,7 +84,7 @@ export default class Scatterplot extends Component {
   render() {
     const noDataMsg = this.props.noDataMessage || "No data available";
     if (this.props.data === undefined)
-      return <ReactText>{noDataMsg}</ReactText>;
+      return <Text>{noDataMsg}</Text>;
 
     const options = new Options(this.props);
     const accessor = function(key) {
@@ -156,12 +138,12 @@ export default class Scatterplot extends Component {
     return (
       <Svg width={options.width} height={options.height}>
         <Svg.G x={options.margin.left} y={options.margin.top}>
-          <Svg.GridAxis
+          <GridAxis
             scale={chart.xscale}
             options={options.axisX}
             chartArea={chartArea}
           />
-          <Svg.GridAxis
+          <GridAxis
             scale={chart.yscale}
             options={options.axisY}
             chartArea={chartArea}

@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "privacy": "unlisted",
+    "name": "react-native-pathjs-charts-expo-example",
+    "description": "Example expo app for the react-native-pathjs-charts-expo npm module",
+    "sdkVersion": "30.0.0",
+    "version": "0.2.0"
+  }
+}
