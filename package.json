@@ -1,6 +1,6 @@
 {
   "name": "react-native-pathjs-charts-expo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cross platform React Native charting library for expo based on react-native-pathjs-charts 0.0.34",
   "repository": {
     "type": "git",

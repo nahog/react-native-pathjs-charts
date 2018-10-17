@@ -16,7 +16,7 @@ SPDX-License-Identifier: Apache-2.0
 //import extractProps from "react-native-svg/lib/extract/extractProps";
 import React, { Component } from "react";
 import { Text as ReactText, Animated } from "react-native";
-import { Svg } from "expopo";
+import { Svg } from "expo";
 import { Colors, Options, cyclic, identity, fontAdapt } from "./util";
 import _ from "lodash";
 const Pie = require("paths-js/pie");
