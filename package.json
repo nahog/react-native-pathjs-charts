@@ -1,10 +1,10 @@
 {
   "name": "react-native-pathjs-charts-expo",
-  "version": "0.0.34-2",
-  "description": "Cross platform React Native charting library based on path-js and react-native-svg that asumes the react-native-svg dependency from expo",
+  "version": "0.1.0",
+  "description": "Cross platform React Native charting library for expo based on react-native-pathjs-charts 0.0.34",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nahog/react-native-pathjs-charts"
+    "url": "https://github.com/nahog/react-native-pathjs-charts-expo"
   },
   "main": "src/index.js",
   "scripts": {
@@ -18,7 +18,8 @@
     "paths-js",
     "react-pathjs-chart",
     "ios",
-    "android"
+    "android",
+    "react-native-pathjs-charts"
   ],
   "author": "Nicolas Padula",
   "license": "Apache-2.0",

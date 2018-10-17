@@ -288,9 +288,9 @@ class StockLineChartDynamicLineRendering extends Component {
       },
       strokeWidth: 2,
 
-      showAreas: (curve: number, index: number) => index === 0,
+      showAreas: (curve, index) => index === 0,
 
-      showPoints: (graphIndex: number, pointIndex: number) =>
+      showPoints: (graphIndex, pointIndex) =>
         graphIndex === 1 && pointIndex === data[1].length - 1,
       renderPoint: () => [
         <Svg.Text
@@ -323,9 +323,8 @@ class StockLineChartDynamicLineRendering extends Component {
         />
       ],
 
-      strokeDasharray: (curve: number, index: number) =>
-        index === 2 ? [5] : [],
-      strokeOpacity: (curve: number, index: number) => (index === 2 ? 0.3 : 1)
+      strokeDasharray: (curve, index) => (index === 2 ? [5] : []),
+      strokeOpacity: (curve, index) => (index === 2 ? 0.3 : 1)
     };
 
     return (
