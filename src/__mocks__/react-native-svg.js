@@ -15,10 +15,9 @@ See the License for the specific language governing permissions and limitations 
 SPDX-Copyright: Copyright (c) Capital One Services, LLC
 SPDX-License-Identifier: Apache-2.0
 */
-import React from 'react'
+import React from "react";
 
-
-// const rnsvg = jest.genMockFromModule('react-native-svg');
+// const rnsvg = jest.genMockFromModule('expo');
 // module.exports = rnsvg;
 
 export default function(props) {
@@ -26,49 +25,45 @@ export default function(props) {
     <view mockedComponent="svg-component" {...props}>
       {props.children}
     </view>
-  )
+  );
 }
 
-export const Rect = (props) => {
-  return (
-    <view mockedComponent="svg-Rect" {...props} />
-  )
-}
+export const Rect = props => {
+  return <view mockedComponent="svg-Rect" {...props} />;
+};
 
-export const Path = (props) => {
+export const Path = props => {
   return (
-    <view mockedComponent="svg-Path" {...props} >
+    <view mockedComponent="svg-Path" {...props}>
       {props.children}
     </view>
-  )
-}
+  );
+};
 
-export const G = (props) => {
+export const G = props => {
   return (
     <view mockedComponent="svg-G" {...props}>
       {props.children}
     </view>
-  )
-}
+  );
+};
 
-export const Svg = (props) => {
+export const Svg = props => {
   return (
-    <view mockedComponent="svg-Svg" {...props} >
+    <view mockedComponent="svg-Svg" {...props}>
       {props.children}
     </view>
-  )
-}
+  );
+};
 
-export const Text = (props) => {
+export const Text = props => {
   return (
-    <view mockedComponent="svg-Text" {...props} >
+    <view mockedComponent="svg-Text" {...props}>
       {props.children}
     </view>
-  )
-}
+  );
+};
 
-export const Circle = (props) => {
-  return (
-    <view mockedComponent="svg-Circle" {...props} />
-  )
-}
+export const Circle = props => {
+  return <view mockedComponent="svg-Circle" {...props} />;
+};

@@ -16,37 +16,36 @@ SPDX-Copyright: Copyright (c) Capital One Services, LLC
 SPDX-License-Identifier: Apache-2.0
 */
 
-import React, {Component} from 'react'
-import {Text as ReactText}  from 'react-native'
-import Svg,{ Circle, G } from 'react-native-svg'
-import { Options, styleSvg } from './util'
-import Axis from './Axis'
-import GridAxis from './GridAxis'
-import _ from 'lodash'
+import React, { Component } from "react";
+import { Text as ReactText } from "react-native";
+import { Svg } from "expo";
+import { Options, styleSvg } from "./util";
+import Axis from "./Axis";
+import GridAxis from "./GridAxis";
+import _ from "lodash";
 
-const Stock = require('paths-js/stock')
+const Stock = require("paths-js/stock");
 
 export default class Scatterplot extends Component {
-
   static defaultProps = {
-    xKey:'',
-    yKey:'',
+    xKey: "",
+    yKey: "",
     options: {
       width: 600,
       height: 600,
-      margin: {top: 40, left: 60, bottom: 30, right: 30},
-      fill: '#2980B9',
-      stroke: '#3E90F0',
+      margin: { top: 40, left: 60, bottom: 30, right: 30 },
+      fill: "#2980B9",
+      stroke: "#3E90F0",
       animate: {
-        type: 'delayed',
+        type: "delayed",
         duration: 200,
-        fillTransition:3
+        fillTransition: 3
       },
       label: {
-        fontFamily: 'Arial',
+        fontFamily: "Arial",
         fontSize: 14,
         bold: true,
-        color: '#34495E'
+        color: "#34495E"
       },
       axisX: {
         showAxis: true,
@@ -54,12 +53,12 @@ export default class Scatterplot extends Component {
         showLabels: true,
         showTicks: true,
         zeroAxis: false,
-        orient: 'bottom',
+        orient: "bottom",
         label: {
-          fontFamily: 'Arial',
+          fontFamily: "Arial",
           fontSize: 14,
           bold: true,
-          color: '#34495E'
+          color: "#34495E"
         }
       },
       axisY: {
@@ -68,48 +67,49 @@ export default class Scatterplot extends Component {
         showLabels: true,
         showTicks: true,
         zeroAxis: false,
-        orient: 'left',
+        orient: "left",
         label: {
-          fontFamily: 'Arial',
+          fontFamily: "Arial",
           fontSize: 14,
           bold: true,
-          color: '#34495E'
+          color: "#34495E"
         }
       }
     }
-  }
+  };
 
-  getMaxAndMin(chart, key,scale) {
-    let maxValue
-    let minValue
-    _.each(chart.curves, function (serie) {
-      let values = _.map(serie.item, function (item) {
-        return item[key]
-      })
+  getMaxAndMin(chart, key, scale) {
+    let maxValue;
+    let minValue;
+    _.each(chart.curves, function(serie) {
+      let values = _.map(serie.item, function(item) {
+        return item[key];
+      });
 
-      let max = _.max(values)
-      if (maxValue === undefined || max > maxValue) maxValue = max
-      let min = _.min(values)
-      if (minValue === undefined || min < minValue) minValue = min
-    })
+      let max = _.max(values);
+      if (maxValue === undefined || max > maxValue) maxValue = max;
+      let min = _.min(values);
+      if (minValue === undefined || min < minValue) minValue = min;
+    });
     return {
       minValue: minValue,
       maxValue: maxValue,
-      min:scale(minValue),
-      max:scale(maxValue)
-    }
+      min: scale(minValue),
+      max: scale(maxValue)
+    };
   }
 
   render() {
-    const noDataMsg = this.props.noDataMessage || 'No data available'
-    if (this.props.data === undefined) return (<ReactText>{noDataMsg}</ReactText>)
+    const noDataMsg = this.props.noDataMessage || "No data available";
+    if (this.props.data === undefined)
+      return <ReactText>{noDataMsg}</ReactText>;
 
-    const options = new Options(this.props)
-    const accessor = function (key) {
-      return function (x) {
-        return x[key]
-      }
-    }
+    const options = new Options(this.props);
+    const accessor = function(key) {
+      return function(x) {
+        return x[key];
+      };
+    };
 
     const chart = Stock({
       data: this.props.data,
@@ -118,33 +118,67 @@ export default class Scatterplot extends Component {
       width: options.chartWidth,
       height: options.chartHeight,
       closed: false
-    })
+    });
 
     const chartArea = {
-      x:this.getMaxAndMin(chart,this.props.xKey,chart.xscale),
-      y:this.getMaxAndMin(chart,this.props.yKey,chart.yscale),
-      margin:options.margin
-    }
+      x: this.getMaxAndMin(chart, this.props.xKey, chart.xscale),
+      y: this.getMaxAndMin(chart, this.props.yKey, chart.yscale),
+      margin: options.margin
+    };
 
-    const colors = styleSvg({},options)
-    const points = _.map(chart.curves, function (c) {
-      return _.map(c.line.path.points(),function(p,j) {
-        let render = <G key={'k' + j} x={p[0]} y={p[1]}>
-                    <Circle {...colors} cx={0} cy={0} r={options.r || 5} fillOpacity={1} />
-                </G>
+    const colors = styleSvg({}, options);
+    const points = _.map(
+      chart.curves,
+      function(c) {
+        return _.map(
+          c.line.path.points(),
+          function(p, j) {
+            let render = (
+              <Svg.G key={"k" + j} x={p[0]} y={p[1]}>
+                <Svg.Circle
+                  {...colors}
+                  cx={0}
+                  cy={0}
+                  r={options.r || 5}
+                  fillOpacity={1}
+                />
+              </Svg.G>
+            );
 
-        return render
-      },this)
-    },this)
+            return render;
+          },
+          this
+        );
+      },
+      this
+    );
 
-    return (<Svg width={options.width} height={options.height}>
-            <G x={options.margin.left} y={options.margin.top}>
-                <GridAxis scale={chart.xscale} options={options.axisX} chartArea={chartArea} />
-                <GridAxis scale={chart.yscale} options={options.axisY} chartArea={chartArea} />
-                { points }
-                <Axis scale={chart.xscale} options={options.axisX} chartArea={chartArea} />
-                <Axis scale={chart.yscale} options={options.axisY} chartArea={chartArea} />
-            </G>
-        </Svg>)
+    return (
+      <Svg width={options.width} height={options.height}>
+        <Svg.G x={options.margin.left} y={options.margin.top}>
+          <Svg.GridAxis
+            scale={chart.xscale}
+            options={options.axisX}
+            chartArea={chartArea}
+          />
+          <Svg.GridAxis
+            scale={chart.yscale}
+            options={options.axisY}
+            chartArea={chartArea}
+          />
+          {points}
+          <Axis
+            scale={chart.xscale}
+            options={options.axisX}
+            chartArea={chartArea}
+          />
+          <Axis
+            scale={chart.yscale}
+            options={options.axisY}
+            chartArea={chartArea}
+          />
+        </Svg.G>
+      </Svg>
+    );
   }
 }
