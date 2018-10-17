@@ -13,7 +13,7 @@ SPDX-Copyright: Copyright (c) Capital One Services, LLC
 SPDX-License-Identifier: Apache-2.0
 */
 
-import extractProps from "react-native-svg/lib/extract/extractProps";
+//import extractProps from "react-native-svg/lib/extract/extractProps";
 import React, { Component } from "react";
 import { Text as ReactText, Animated } from "react-native";
 import { Svg } from "expopo";
@@ -22,6 +22,8 @@ import _ from "lodash";
 const Pie = require("paths-js/pie");
 
 const ANIMATION_START_DELAY = 1000;
+
+function extractProps() {}
 
 export default class PieChart extends Component {
   static defaultProps = {
